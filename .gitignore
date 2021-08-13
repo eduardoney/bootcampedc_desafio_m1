@@ -1,0 +1,4 @@
+*.csv
+*.exe
+.venv/
+data/microdados_educacao_basica_2020/
