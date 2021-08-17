@@ -1,6 +1,6 @@
 resource "aws_emr_cluster" "cluster" {
   name          = "emr-edc-${var.numero_conta}"
-  release_label = "emr-6.3.0"
+  release_label = "emr-6.2.0"
   applications  = ["Spark", "Hadoop", "Hive", "JupyterHub", "JupyterEnterpriseGateway", "Hue", "Pig", "Livy"]
 
   termination_protection            = false
@@ -15,14 +15,14 @@ resource "aws_emr_cluster" "cluster" {
   }
 
   master_instance_group {
-    instance_type  = "m4.large"
+    instance_type  = "m5.xlarge"
     instance_count = 1
-    bid_price      = "0.20"
+    bid_price      = "0.10"
   }
 
   core_instance_group {
-    instance_type  = "c4.large"
-    instance_count = 1
+    instance_type  = "m5.xlarge"
+    instance_count = 2
 
     ebs_config {
       size                 = "40"
@@ -30,7 +30,7 @@ resource "aws_emr_cluster" "cluster" {
       volumes_per_instance = 1
     }
 
-    bid_price = "0.20"
+    bid_price = "0.10"
   }
 
   ebs_root_volume_size = 50
@@ -40,4 +40,5 @@ resource "aws_emr_cluster" "cluster" {
   }
 
   service_role = aws_iam_role.iam_emr_service_role.arn
+
 }

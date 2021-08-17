@@ -15,3 +15,9 @@ variable "aws_region" {
   default     = "us-east-1"
   description = "Região default do aws"
 }
+
+variable "database" {
+  type        = string
+  default     = "datalake_edc"
+  description = "Nome da base de dados para consumo do athena"
+}
