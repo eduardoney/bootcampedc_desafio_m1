@@ -213,6 +213,11 @@ resource "aws_iam_role_policy" "iam_glue_crawler_profile_policy" {
         },
         {
             "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
             "Action": [
                 "s3:CreateBucket",
                 "s3:PutBucketPublicAccessBlock"
